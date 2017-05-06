@@ -13,18 +13,22 @@ To download this image from the public docker hub:
 
 To re-build this image from the dockerfile:
 
-	$ docker build -t alpine-cassandra .
+	$ docker build -t docker-alpine-cassandra .
 
 ## Usage
 
 To run `cassandrad`:
 
-	$ docker run -d -p 9042:9042 --name alpine-cassandra alpine-cassandra
+	$ docker run -d -p 9042:9042 --name alpine-cassandra docker-alpine-cassandra
 
 To use the cassandra cqlsh client:
 
-	$ docker exec -ti alpine-cassandra cqlsh localhost
+	$ docker exec -ti alpine-cassandra cqlsh
 
+To login:
+
+	$ docker exec -ti alpine-cassandra /bin/ash
+ 
 ## Limitations
 
 - On MacOSX, volumes located in a virtualbox shared folder are not

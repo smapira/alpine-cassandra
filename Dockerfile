@@ -6,11 +6,9 @@ MAINTAINER <smapira@routeflags.com>
 RUN apk add --update --no-cache ca-certificates openjdk8 python
 
 ## Install Cassandra
-RUN wget http://apache.cs.utah.edu/cassandra/3.10/apache-cassandra-3.10-bin.tar.gz
-RUN tar -xvzf apache-cassandra-3.10-bin.tar.gz
+RUN wget -O - 'http://apache.cs.utah.edu/cassandra/3.10/apache-cassandra-3.10-bin.tar.gz' | tar zxvf -
 RUN mv apache-cassandra-3.10 /root/cassandra
-RUN mkdir /var/lib/cassandra
-RUN mkdir /var/log/cassandra
+RUN mkdir /var/lib/cassandra /var/log/cassandra
 
 ## Establish Cassandra Environmental Variables
 ENV CASSANDRA_VERSION 3.10
