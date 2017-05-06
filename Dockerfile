@@ -1,11 +1,9 @@
 FROM alpine:edge
 
-MAINTAINER <info@routeflags.com>
+MAINTAINER <smapira@routeflags.com>
 
 # Update Alpine environment
-RUN apk update
-RUN apk upgrade
-RUN apk add ca-certificates
+RUN apk add --update --no-cache ca-certificates openjdk8 python
 
 ## Install Cassandra
 RUN wget http://apache.cs.utah.edu/cassandra/3.10/apache-cassandra-3.10-bin.tar.gz
@@ -21,5 +19,4 @@ ENV PATH $PATH:/root/cassandra/bin
 
 EXPOSE 9042
 
-# Clean APK cache
-RUN rm -rf /var/cache/apk/*
+CMD [ "cassandra", "-Rf" ]
