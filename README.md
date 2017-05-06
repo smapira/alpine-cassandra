@@ -1,9 +1,7 @@
-# docker-alpine-mongo
+# docker-alpine-cassandra
 
-This repository contains Dockerfile for [MongoDB 3.4](https://www.mongodb.org)
+This repository contains Dockerfile for [cassandraDB 3.4](https://www.cassandradb.org)
 container, based on the [Alpine edge](https://hub.docker.com/_/alpine/) image.
-
-Why ? the official mongo image size: 360 MB, alpine-mongo: 106 MB
 
 ## Install
 
@@ -11,36 +9,36 @@ As a prerequisite, you need [Docker](https://docker.com) to be installed.
 
 To download this image from the public docker hub:
 
-	$ docker pull mvertes/alpine-mongo
+	$ docker pull mvertes/alpine-cassandra
 
 To re-build this image from the dockerfile:
 
-	$ docker build -t mvertes/alpine-mongo .
+	$ docker build -t mvertes/alpine-cassandra .
 
 ## Usage
 
-To run `mongod`:
+To run `cassandrad`:
 
-	$ docker run -d --name mongo -p 27017:27017 mvertes/alpine-mongo
+	$ docker run -d --name cassandra -p 27017:27017 mvertes/alpine-cassandra
 
 You can also specify the database repository where to store the data
 with the volume -v option:
 
-    $ docker run -d --name mongo -p 27017:27017 \
+    $ docker run -d --name cassandra -p 27017:27017 \
 	  -v /somewhere/onmyhost/mydatabase:/data/db \
-	  mvertes/alpine-mongo
+	  mvertes/alpine-cassandra
 
 To run a shell session:
 
-    $ docker exec -ti mongo sh
+    $ docker exec -ti cassandra sh
 
-To use the mongo shell client:
+To use the cassandra shell client:
 
-	$ docker exec -ti mongo mongo
+	$ docker exec -ti cassandra cassandra
 
-The mongo shell client can also be run its own container: 
+The cassandra shell client can also be run its own container: 
 
-	$ docker run -ti --rm --name mongoshell monogo host:port/db
+	$ docker run -ti --rm --name cassandrashell monogo host:port/db
 
 ## Limitations
 

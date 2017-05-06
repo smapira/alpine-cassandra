@@ -1,12 +1,25 @@
 FROM alpine:edge
 
-RUN \
-apk add --no-cache mongodb && \
-rm /usr/bin/mongoperf
+MAINTAINER <info@routeflags.com>
 
-VOLUME /data/db
-EXPOSE 27017 28017
+# Update Alpine environment
+RUN apk update
+RUN apk upgrade
+RUN apk add ca-certificates
 
-COPY run.sh /root
-ENTRYPOINT [ "/root/run.sh" ]
-CMD [ "mongod" ]
+## Install Cassandra
+RUN wget http://apache.cs.utah.edu/cassandra/3.10/apache-cassandra-3.10-bin.tar.gz
+RUN tar -xvzf apache-cassandra-3.10-bin.tar.gz
+RUN mv apache-cassandra-3.10 /root/cassandra
+RUN mkdir /var/lib/cassandra
+RUN mkdir /var/log/cassandra
+
+## Establish Cassandra Environmental Variables
+ENV CASSANDRA_VERSION 3.10
+ENV CASSANDRA_HOME /root/cassandra
+ENV PATH $PATH:/root/cassandra/bin
+
+EXPOSE 9042
+
+# Clean APK cache
+RUN rm -rf /var/cache/apk/*

@@ -1,5 +1,5 @@
-VERSION = 3.4.3-1
-IMAGE = mvertes/alpine-mongo:$(VERSION)
+VERSION = 1.0.0-1
+IMAGE = smapira/alpine-cassandra:$(VERSION)
 
 all:
 
