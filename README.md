@@ -28,13 +28,6 @@ To use the cassandra cqlsh client:
 To login:
 
 	$ docker exec -ti alpine-cassandra /bin/ash
- 
-## Limitations
-
-- On MacOSX, volumes located in a virtualbox shared folder are not
-  supported, due to a limitation of virtualbox (default docker-machine
-  driver) not supporting fsync().
-
 
 ## Super Thanks
 - [mvertes/docker-alpine-mongo](https://github.com/mvertes/docker-alpine-mongo)
