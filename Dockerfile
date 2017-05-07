@@ -5,15 +5,14 @@ MAINTAINER <smapira@routeflags.com>
 # Update Alpine environment
 RUN apk add --update --no-cache ca-certificates openjdk8 python
 
-## Install Cassandra
+## Establish Cassandra Environmental Variables
 ENV CASSANDRA_VERSION 3.10
 ENV CASSANDRA_HOME /root/cassandra
 
+## Install Cassandra
 RUN wget --output-document - http://ftp.riken.jp/net/apache/cassandra/$CASSANDRA_VERSION/apache-cassandra-$CASSANDRA_VERSION-bin.tar.gz | tar zxvf - && \
   mv apache-cassandra-$CASSANDRA_VERSION $CASSANDRA_HOME
 RUN mkdir /var/lib/cassandra /var/log/cassandra
-
-## Establish Cassandra Environmental Variables
 ENV PATH $PATH:$CASSANDRA_HOME/bin
 
 ## 7000: intra-node communication
