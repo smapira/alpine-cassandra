@@ -6,7 +6,7 @@ MAINTAINER <smapira@routeflags.com>
 RUN apk add --update --no-cache ca-certificates openjdk8 python
 
 ## Establish Cassandra Environmental Variables
-ENV CASSANDRA_VERSION 3.10
+ENV CASSANDRA_VERSION 3.11.8
 ENV CASSANDRA_HOME /root/cassandra
 
 ## Install Cassandra
