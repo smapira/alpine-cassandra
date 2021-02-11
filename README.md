@@ -1,6 +1,6 @@
 # docker-alpine-cassandra
 
-This repository contains Dockerfile for [cassandra 3.10](http://cassandra.apache.org/)
+This repository contains Dockerfile for [cassandra 3.11](http://cassandra.apache.org/)
 container, based on the [Alpine edge](https://hub.docker.com/_/alpine/) image.
 
 ## Install
